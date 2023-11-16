@@ -393,7 +393,29 @@ def menghapusDataSiswa():
     if checkDataDelete == 'Y':
         try:
             noSiswaDel = int(input('Masukkan No. Siswa yang ingin dihapus : '))
-            del listSiswa[noSiswaDel]
+            noSiswaDiTemukan1 = False
+            for i in range(len(listSiswa)):
+                if(noSiswaDel == i) :
+                    noSiswaDiTemukan1 = True
+                    cart = list(listSiswa[noSiswaDel])
+                    print("=" * 65)
+                    print('Siswa ditemukan Sekarang Anda Bisa Menghapus Datanya')
+                    print("=" * 81) 
+                    print('| {:5} | {:13} | {:13} | {:6} | {:12} | {:13} |'.format(listSiswa[i][0],listSiswa[i][1],listSiswa[i][2],listSiswa[i][3],listSiswa[i][4],listSiswa[i][5]))
+                    print("=" * 81)
+                    print("")
+                                
+                    print('-' * 40)
+                    checkUpdate = input('Ingin Melanjutkan Menghapus Data Siswa (Y/N) :').upper()
+                    print('-' * 40)
+                    if checkUpdate == 'Y':
+                        del listSiswa[noSiswaDel]
+                    else:
+                        continue
+            if not noSiswaDiTemukan1:
+                print('') 
+                print('Nomor siswa tidak ditemukan apa yang anda ingin rubah pada siswa')
+                print('')
         except:
             print ('Hanya boleh memasukkan angka, Sesuaikan dengan nomor siswa!')
 
